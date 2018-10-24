@@ -30,7 +30,6 @@ import (
 	frpNet "github.com/fatedier/frp/utils/net"
 	"github.com/fatedier/frp/utils/util"
 	"github.com/fatedier/frp/utils/version"
-
 	"github.com/fatedier/golib/control/shutdown"
 	"github.com/fatedier/golib/crypto"
 	fmux "github.com/hashicorp/yamux"
@@ -115,7 +114,8 @@ func (ctl *Control) Run() (err error) {
 			// if login_fail_exit is true, just exit this program
 			// otherwise sleep a while and continues relogin to server
 			if g.GlbClientCfg.LoginFailExit {
-				return
+				time.Sleep(60 * time.Second)
+				//return
 			} else {
 				time.Sleep(10 * time.Second)
 			}
